@@ -1,17 +1,65 @@
-<h1>angular-avalon NgxAvalonMoon test</h1>
+<h1>avalon-moon examples</h1>
 
-<input type="number" #yearInput (input)="yearChange($event, yearInput)" [value]="year" required />
+<h2>Provide the phase</h2>
+<p>A phaseNumber can be provided on it's own</p>
+<p>an event with the phase name is generated so you may customize the markup.</p>
+<div>
+  <img src="../assets/example1.small.png"/>
+</div>
+
+<div class="phase-row">
+  <avalon-moon 
+    *ngFor="let phase of phases"
+    [phaseNumber]="phase.num"
+    (phaseName)="phase.name = $event"
+    >
+      <div>{{phase.num}} </div>
+      <div>{{phase.name}}</div>
+
+  </avalon-moon>
+</div>
+<hr/>
+<h2>Adjustable sizing</h2>
+<p>The element renders as an svg, so should scale appropriately with css sizing.</p>
+<p>No date or phaseNumber provided will use the current date to calculate the phase.</p>
+<div>
+  <img src="../assets/example3.small.png" />
+</div>
+<div>
+  <avalon-moon [style.height.px]="100" ></avalon-moon>
+</div>
+
+<hr/>
+<h2>Provide a date</h2>
+
+<div>
+  <img src="../assets/example2.small.png"/>
+</div>
+
+<p>A string date value (yyyy-mm-dd) provided will calculate the moon phase for that date.</p>
+<div>
+  <input type="number" #yearInput (input)="yearChange($event, yearInput)" [value]="year" required />
+</div>
 <div *ngIf="!isValidInput" class="error">Invalid year - must be a number</div>
 
-<input type="color" #color1Input (change)="color1Change($event, color1Input)" [value]="color1" required />
-<input type="color" #color2Input (change)="color2Change($event, color2Input)" [value]="color2" required />
+<p>Dark and light colors can also be provided</p>
+<div>
+  <label>Dark Color</label> 
+  <input type="color" #darkColorInput (change)="darkColorChange($event, darkColorInput)" [value]="darkColor" required />
+</div>
+<div>
+  <label>Light Color</label> 
+  <input type="color" #lightColorInput (change)="lightColorChange($event, lightColorInput)" [value]="lightColor" required />
+</div>
 
-<div *ngFor="let month of months">
+
+<div *ngFor="let month of months" class="phase-row">
   <p>Month: {{month.label}}</p>
-  <NgxAvalon-moon 
+  <avalon-moon 
     *ngFor="let day of month.days"
-    date="{{year}}-{{month.num}}-{{day}}" 
-    [color1]="color1"
-    [color2]="color2"
-    ><span>{{day}}</span></NgxAvalon-moon>
+    [date]="day.date" 
+    [darkColor]="darkColor"
+    [lightColor]="lightColor"
+    (phaseName)="day.phaseName = $event"
+    ><div>{{day.num}}</div>{{day.phaseName}}</avalon-moon>
 </div>

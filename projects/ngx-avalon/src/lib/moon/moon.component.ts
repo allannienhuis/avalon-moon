@@ -1,47 +1,47 @@
-import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import * as Debug from 'debug';
 
 const debug = Debug('avalon:moon.component');
 
-export const phases = new Map<number, Iphase>([
-  [0, {name: 'New Moon', color: 'white', src: ''}],
-  [1, {name: 'Waxing Crescent Moon', color: 'blue', src: ''}],
-  [2, {name: 'Quarter Moon', color: 'green', src: ''}],
-  [3, {name: 'Waxing Gibbous Moon', color: 'orange', src: ''}],
-  [4, {name: 'Full Moon', color: 'red', src: ''}],
-  [5, {name: 'Waning Gibbous Moon', color: 'purple', src: ''}],
-  [6, {name: 'Last Quarter Moon', color: 'teal', src: ''}],
-  [7, {name: 'Waning Crescent Moon', color: 'yellow', src: ''}],
+export const phases = new Map<number, string>([
+  [0, 'New Moon'],
+  [1, 'Waxing Crescent Moon'],
+  [2, 'Quarter Moon'],
+  [3, 'Waxing Gibbous Moon'],
+  [4, 'Full Moon'],
+  [5, 'Waning Gibbous Moon'],
+  [6, 'Last Quarter Moon'],
+  [7, 'Waning Crescent Moon'],
   ]);
 
-export interface Iphase {
-  name: string;
-  color: string;
-  src: string;
-};
 @Component({
-  selector: 'NgxAvalon-moon',
+  selector: 'avalon-moon',
   templateUrl: './moon.component.html',
   styleUrls: ['./moon.component.css']
 })
 export class MoonComponent implements OnInit, OnChanges {
 
   @Input() public date = new Date().toJSON();
-  @Output() public phaseNumber = 0;
-  @Output() public phase = phases.get(0);
-  @Input() public color1 = '#59513E';
-  @Input() public color2 = '#D8CDA8';
+  @Input() public phaseNumber = -1;
+  @Output() public phaseNumberChanged = new EventEmitter();
+  @Output() public phaseName = new EventEmitter();
+  @Input() public darkColor = '#59513E';
+  @Input() public lightColor = '#D8CDA8';
 
   constructor() { }
 
   public ngOnInit(): void {
 
-    const date = new Date(this.date);
-    const y = date.getFullYear();
-    const m = date.getMonth();
-    const d = date.getDate();
-    this.phaseNumber = this.getMoonPhase(y, m, d);
-    this.phase = phases.get(this.phaseNumber);
+    if (this.phaseNumber === -1) {
+      // if phasenumber not set by input, set the default date
+      const date = new Date(this.date);
+      const y = date.getFullYear();
+      const m = date.getMonth();
+      const d = date.getDate();
+      this.phaseNumber = this.getMoonPhase(y, m, d);
+      debug('setting phasenumber', this.phaseNumber);
+    }
+
   }
 
   private isValidDate(d:any) {
@@ -63,14 +63,16 @@ export class MoonComponent implements OnInit, OnChanges {
       // date supplied
       this.phaseNumber = this.getMoonPhase(y, m, d);
     } else if (changes.phaseNumber) {
+      debug('phaseNumber', this.phaseNumber);
       // ignore date
       if ((this.phaseNumber < 0) || (this.phaseNumber > 8)) {
         this.phaseNumber = 0;
       } 
     }
 
-    // debug('phasenumber', this.phaseNumber);
-    this.phase = phases.get(this.phaseNumber);
+    debug('this.phaseNumber', this.phaseNumber);
+    this.phaseNumberChanged.emit(this.phaseNumber);
+    this.phaseName.emit(phases.get(this.phaseNumber));
 
   }
 

@@ -1,4 +1,9 @@
+:host {
+    font-family: sans-serif;
+    text-align: center;
+}
 input {
+    margin-top: 10px;
     font-size: 20px;
     &:valid {
         border: 1px solid green;
@@ -7,4 +12,15 @@ input {
         border: 1px solid red;
         color: red;
     }
+}
+img {
+    display: block;
+    margin: 10px auto;
+}
+
+.phase-row avalon-moon {
+    margin: 5px;
+    text-align: center;
+    font-size: 10px;
+    max-width: 50px;
 }

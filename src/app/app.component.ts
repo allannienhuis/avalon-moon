@@ -5,7 +5,18 @@ const debug = Debug('avalon-app:app.component');
 interface IMonth {
   num: number;
   label: string;
-  days: number[];
+  days: IDay[];
+}
+
+interface IDay {
+  num: number;
+  date: string;
+  phaseName?: string;
+}
+
+interface IPhase {
+  num: number;
+  name: string;
 }
 @Component({
   selector: 'avalon-root',
@@ -16,15 +27,21 @@ export class AppComponent implements OnInit{
 
   public year = new Date().getFullYear();
   public months: IMonth[] = [];
-  public color1 = 'lightgrey';
-  public color2 = 'darkgrey';
+  public darkColor = 'darkgrey';
+  public lightColor = 'lightgrey';
+  public phases: IPhase[];
 
   constructor() {
     
-    this.color1 = this.standardize_color(this.color1);
-    this.color2 = this.standardize_color(this.color2);
+    this.darkColor = this.standardize_color(this.darkColor);
+    this.lightColor = this.standardize_color(this.lightColor);
+    this.phases = this.range(0, 7).map((n) => {return {num: n, name: ''}});
+    debug('phases', this.phases);
   }
 
+  private  range(start: number, end: number) {
+    return Array(end - start + 1).fill(undefined).map((_, idx) => start + idx)
+  }
   // converts to hex #
   // which is what input type="color" require.
   private standardize_color(str: string){
@@ -61,12 +78,12 @@ export class AppComponent implements OnInit{
 
   }
 
-  public color1Change(e: Event, input: HTMLInputElement) {
-    this.color1 = input.value;
+  public darkColorChange(e: Event, input: HTMLInputElement) {
+    this.darkColor = input.value;
   }
 
-  public color2Change(e: Event, input: HTMLInputElement) {
-    this.color2 = input.value;
+  public lightColorChange(e: Event, input: HTMLInputElement) {
+    this.lightColor = input.value;
   }
 
   private init(year: number){
@@ -84,7 +101,7 @@ export class AppComponent implements OnInit{
         month = { num: monthNumber, days: [], label: day.toLocaleString('default', {month: 'long'})};
         this.months[monthNumber] = month;
       }
-      month.days[dayNumber] = dayNumber;
+      month.days[dayNumber] = { num: dayNumber, date: `${year}-${monthNumber}-${dayNumber}`};
 
       day.setDate(dayNumber + 1);
     }
