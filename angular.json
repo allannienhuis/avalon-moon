@@ -125,7 +125,50 @@
           }
         }
       }
+    },
+    "NgxAvalon": {
+      "projectType": "library",
+      "root": "projects/ngx-avalon",
+      "sourceRoot": "projects/ngx-avalon/src",
+      "prefix": "NgxAvalon",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ngx-avalon/tsconfig.lib.json",
+            "project": "projects/ngx-avalon/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-avalon/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-avalon/src/test.ts",
+            "tsConfig": "projects/ngx-avalon/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-avalon/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-avalon/tsconfig.lib.json",
+              "projects/ngx-avalon/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "angular-avalon"
+  "defaultProject": "angular-avalon",
+  "cli": {
+    "analytics": "8a477bfc-432d-4a90-b5fe-e170c406d49f"
+  }
 }
