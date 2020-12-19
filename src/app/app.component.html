@@ -48,19 +48,19 @@
 </div>
 
 <p>A string date value (yyyy-mm-dd) provided will calculate the moon phase for that date.</p>
-<label>Choose the year</label>
 <div>
+  <label>Choose the year: </label>
   <input type="number" #yearInput (input)="yearChange($event, yearInput)" [value]="year" required />
 </div>
 <div *ngIf="!isValidInput" class="error">Invalid year - must be a number</div>
 
 <p>Dark and light colors can also be provided</p>
 <div>
-  <label>Dark Color</label> 
+  <label>Dark Color: </label> 
   <input type="color" #darkColorInput (change)="darkColorChange($event, darkColorInput)" [value]="darkColor" required />
 </div>
 <div>
-  <label>Light Color</label> 
+  <label>Light Color: </label> 
   <input type="color" #lightColorInput (change)="lightColorChange($event, lightColorInput)" [value]="lightColor" required />
 </div>
 
