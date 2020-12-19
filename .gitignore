@@ -2,7 +2,6 @@
 
 # compiled output
 /dist/*
-!/dist/avalon-moon-demo
 /tmp
 /out-tsc
 # Only exists if Bazel was run
