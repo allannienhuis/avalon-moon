@@ -13,6 +13,12 @@ input {
         color: red;
     }
 }
+input[type=color] {
+    cursor: pointer;
+}
+label {
+    margin-right: 5px;
+}
 img {
     display: block;
     margin: 10px auto;
