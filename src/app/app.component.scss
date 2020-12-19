@@ -24,9 +24,22 @@ img {
     margin: 10px auto;
 }
 
-.phase-row avalon-moon {
+.month, .phase-row {
+
+  avalon-moon {
     margin: 5px;
     text-align: center;
     font-size: 10px;
     width: 50px;
+  }
+
+}
+pre {
+    text-align: left;
+    margin: 0 auto;
+    width: 400px;
+}
+
+.example2 {
+    margin: 10px;
 }

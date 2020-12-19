@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AvalonMoonModule } from 'avalon-moon';
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions} from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [
@@ -11,8 +12,14 @@ import { AvalonMoonModule } from 'avalon-moon';
   imports: [
     BrowserModule,
     AvalonMoonModule,
+    HighlightModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HIGHLIGHT_OPTIONS,
+    useValue: <HighlightOptions>{
+      fullLibraryLoader: () => import('highlight.js'),
+    },
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

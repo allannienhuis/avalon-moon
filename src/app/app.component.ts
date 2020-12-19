@@ -12,11 +12,13 @@ interface IDay {
   num: number;
   date: string;
   phaseName?: string;
+  phaseNumber?: string;
 }
 
 interface IPhase {
   num: number;
   name: string;
+  phaseNumber: string;
 }
 @Component({
   selector: 'avalon-root',
@@ -30,12 +32,42 @@ export class AppComponent implements OnInit{
   public darkColor = 'darkgrey';
   public lightColor = 'lightgrey';
   public phases: IPhase[];
+  public example1 = `
+<avalon-moon 
+  *ngFor="let phase of phases"
+  [phaseNumber]="phase.num"
+  (phaseName)="phase.name = $event"
+  (phaseNumberChanged)="phase.phaseNumber = $event"
+  >
+  <div>{{phase.num}} </div>
+  <div>{{phase.name}}</div>
+</avalon-moon>
+  `;
 
+  public example2 = `
+<avalon-moon [style.height.px]="100" >
+</avalon-moon>
+  `;
+  public example3 = `
+<div *ngFor="let month of months" class="month">
+  <p>Month: {{month.label}}</p>
+  <avalon-moon 
+    *ngFor="let day of month.days"
+    [date]="day.date" 
+    [darkColor]="darkColor"
+    [lightColor]="lightColor"
+    (phaseName)="day.phaseName = $event"
+    >
+    <div>{{day.num}}</div>
+    <div>{{day.phaseName}}</div>
+  </avalon-moon>
+</div>
+  `;
   constructor() {
     
     this.darkColor = this.standardize_color(this.darkColor);
     this.lightColor = this.standardize_color(this.lightColor);
-    this.phases = this.range(0, 7).map((n) => {return {num: n, name: ''}});
+    this.phases = this.range(0, 7).map((n) => {return {num: n, name: '', phaseNumber: ''}});
     debug('phases', this.phases);
   }
 

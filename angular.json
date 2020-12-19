@@ -33,6 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
+            "allowedCommonJsDependencies": ["highlight.js","debug"],
             "scripts": []
           },
           "configurations": {
