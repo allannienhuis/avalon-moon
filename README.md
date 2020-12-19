@@ -12,7 +12,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## install
 
-  checkout the repository, run `npm ci` to install dependencies, and run `ng serve' to see the examples.
-  
-  Publishing on NPM is next on the todo list.
+`npm i anienhuis/avalon-moon`
+
+import the module 
+
+
 

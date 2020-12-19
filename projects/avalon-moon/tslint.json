@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ngxAvalon",
+      "avalon-moon",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ngx-avalon",
+      "avalon-moon",
       "kebab-case"
     ]
   }

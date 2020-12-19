@@ -11,4 +11,4 @@ import { MoonComponent } from './moon/moon.component';
   ],
   exports: [MoonComponent]
 })
-export class NgxAvalonModule { }
+export class AvalonMoonModule { }

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/ngx-avalon'),
+      dir: require('path').join(__dirname, '../../coverage/avalon-moon'),
       subdir: '.',
       reporters: [
         { type: 'html' },
