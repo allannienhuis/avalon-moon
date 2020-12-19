@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/avalon-moon-demo",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,7 +69,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "avalon-moon-demo:build",
-            "deployUrl": "avalon-moon/"
+            "deployUrl": "/avalon-moon/",
+            "baseHref": "/avalon-moon/"
 
           },
           "configurations": {
