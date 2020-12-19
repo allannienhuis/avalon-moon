@@ -6,15 +6,14 @@ If no date is provided, it will use the current date.  You may also specify a sp
 
 ## Examples and documentation
 
-This repository is an angular project.  Running the default web project will display examples and documentation.
+See https://allannienhuis.github.io/avalon-moon/ for usage, examples, and more detailed documentation.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+Also, the default web project in this repo is the project published at the above link. Feel free to experiement.
+
+First, build the library: `npm run build-moon`
+
+Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/avalon-moon`.
 
 ## install
 
 `npm i anienhuis/avalon-moon`
-
-import the module 
-
-
-

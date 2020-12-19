@@ -37,4 +37,4 @@ no parameters will display an SVG showing the moon phase for the current date
 
 ## examples and documentation
 
-the git repository is an angular application.  `npm ci && ng s` will serve up an example web application with various uses documented.
+See https://allannienhuis.github.io/avalon-moon/ for usage, examples, and more detailed documentation.
