@@ -26,14 +26,24 @@ img {
 
 .month, .phase-row {
 
-  avalon-moon {
-    margin: 5px;
-    text-align: center;
-    font-size: 10px;
-    width: 50px;
-  }
+    border: 1px solid lightsalmon;
+    margin: 10px auto;
+    width: 475px;
+    background-color: seashell;
+
+
+    avalon-moon {
+        margin: 5px;
+        text-align: center;
+        font-size: 10px;
+        width: 50px;
+    }
 
 }
+.phase-row {
+    width: 500px;
+}
+
 pre {
     text-align: left;
     margin: 0 auto;
