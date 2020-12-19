@@ -68,7 +68,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "avalon-moon-demo:build"
+            "browserTarget": "avalon-moon-demo:build",
+            "deployUrl": "avalon-moon/"
+
           },
           "configurations": {
             "production": {
