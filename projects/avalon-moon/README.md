@@ -8,7 +8,7 @@ angular component to display moon phases
 
 ## usage
 
-import like any other module in your app.module : `import { AvalonMoonModule } from 'avalon-moon';
+import like any other module in your app.module : `import { AvalonMoonModule } from 'avalon-moon'`;
 
 add it to your imports array `import: [AvalonMoonModule]`
 
