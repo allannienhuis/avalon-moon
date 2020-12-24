@@ -43,7 +43,8 @@ See https://allannienhuis.github.io/avalon-moon/ for usage, examples, and more d
 
 1.0.4
 - update svg styling logic
-
+1.0.1-3
+- minor bug fixes
 1.0.0
 - initial release
 
