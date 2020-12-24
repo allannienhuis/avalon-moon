@@ -27,6 +27,7 @@ export class MoonComponent implements OnInit, OnChanges {
   @Output() public phaseName = new EventEmitter();
   @Input() public darkColor = '#59513E';
   @Input() public lightColor = '#D8CDA8';
+  public styles = new Map<number, string>();
 
   constructor() { }
 
@@ -40,8 +41,27 @@ export class MoonComponent implements OnInit, OnChanges {
       const d = date.getDate();
       this.phaseNumber = this.getMoonPhase(y, m, d);
       debug('setting phasenumber', this.phaseNumber);
+      this.initStyles();
     }
 
+  }
+
+  private initStyles() {
+    const dkColor = `fill:${this.darkColor}`;
+    const ltColor = `fill:${this.lightColor};stroke:${this.lightColor}`;
+
+    if (this.phaseNumber === 4) {
+      this.styles.set(0, 'visibility:hidden');
+    } else {
+      this.styles.set(0, dkColor);
+    }
+
+    const foreGroundStyle = 'visibility:hidden';
+    [1,2,3,4,5,6,7].forEach( n => this.styles.set(n, foreGroundStyle));
+    this.styles.set(this.phaseNumber, ltColor);
+
+
+    
   }
 
   private isValidDate(d:any) {
@@ -70,6 +90,7 @@ export class MoonComponent implements OnInit, OnChanges {
       } 
     }
 
+    this.initStyles();
     debug('this.phaseNumber', this.phaseNumber);
     this.phaseNumberChanged.emit(this.phaseNumber);
     this.phaseName.emit(phases.get(this.phaseNumber));

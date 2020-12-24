@@ -9,3 +9,10 @@ svg {
     min-width: 30px;
     display: inline-block;
 }
+
+.hidden {
+    visibility: hidden;
+}
+.visible {
+    visibility: visible;
+}
