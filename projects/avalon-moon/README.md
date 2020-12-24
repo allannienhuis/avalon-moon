@@ -38,3 +38,12 @@ no parameters will display an SVG showing the moon phase for the current date
 ## examples and documentation
 
 See https://allannienhuis.github.io/avalon-moon/ for usage, examples, and more detailed documentation.
+
+## release notes
+
+1.0.4
+- update svg styling logic
+
+1.0.0
+- initial release
+
